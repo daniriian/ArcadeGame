@@ -50,7 +50,7 @@ Enemy.prototype.render = function() {
 var Player = function() {
     this.sprite = "images/char-boy.png";
     this.x = 200;
-    this.y = 320;
+    this.y = 400;
 };
 
 // Is called every time the player position is updated
