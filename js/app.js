@@ -53,6 +53,16 @@ var Player = function() {
     this.y = 320;
 };
 
+// Is called every time the player position is updated
+Player.prototype.update = function() {
+
+    // If the player reaches the water
+    if (player.y < 20) {
+        score++;
+        document.getElementById('playerScore').innerHTML = score;
+        this.reset();
+    }
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
