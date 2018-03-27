@@ -1,3 +1,7 @@
+//Set score panel
+let score = 0;
+document.getElementById("playerScore") = score;
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
