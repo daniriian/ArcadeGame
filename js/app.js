@@ -95,8 +95,9 @@ var enemy2 = new Enemy(-190, 145, 200);
 var enemy3 = new Enemy(-290, 60, 200);
 
 // Place all enemy objects in an array called allEnemies
+var allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
-
+var player = new Player();
 
 
 // This listens for key presses and sends the keys to your
