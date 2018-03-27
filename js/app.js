@@ -82,6 +82,12 @@ Player.prototype.handleInput = function(direction) {
         this.y += 50;
     }
 };
+
+// Called when the player and the enemy touch each other
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 320;
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
