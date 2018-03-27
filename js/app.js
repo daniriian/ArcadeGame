@@ -21,6 +21,21 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.posX < 505) {
+
+        this.posX += (this.speed * dt);
+    } else {
+        this.speed = Math.random() * 500 + 50;
+        this.posX = -90
+        this.posY = Math.floor(Math.random() * 3) * 85 + 60;
+    }
+
+    // if player meets the enemy
+    if (this.posX < player.x + 30 && this.posX + 60 > player.x && this.posY < player.y + 60 && this.posY + 40 > player.y) {
+        score = 0;
+        document.getElementById("playerScore").innerHTML = score;
+        player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
