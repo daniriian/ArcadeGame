@@ -3,7 +3,7 @@ let score = 0;
 document.getElementById("playerScore").innerHTML = score;
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(posX, posY, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -40,7 +40,7 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.posX, this.posY);
 };
 
 // Now write your own player class
