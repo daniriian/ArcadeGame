@@ -64,10 +64,12 @@ Player.prototype.update = function() {
     }
 };
 
+// Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//Handle the player movement in all directions
 Player.prototype.handleInput = function(direction) {
     if (direction == "left" && this.x > 0) {
         this.x -= 50;
