@@ -22,7 +22,6 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.posX < 505) {
-
         this.posX += (this.speed * dt);
     } else {
         this.speed = Math.random() * 500 + 50;
@@ -91,26 +90,27 @@ class Player {
     }
 }
 
+// Gem class
+// create a gem and place it on game board
 class Gem {
-    constructor(x, y) {
+    constructor(x, y, img = 'images/Gem Blue.png') {
         this.x = x;
         this.y = y;
-        this.sprite = "images/Gem Blue.png";
-        console.log(`add gem at ${x} ${y}`);
+        this.sprite = img;
+        this.delay = 0;
     }
 
+    // Draw the gem on the screnn
     render() {
-        "use strict";
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
 
+    // Is called every time the player position is updated
     update() {
         this.checkCollision();
-        console.log('update');
     }
 
     checkCollision() {
-        "use strict";
         // Set hitboxes for collision detection
         var playerBox = { x: player.x, y: player.y, width: 50, height: 40 };
         var gemBox = { x: this.x, y: this.y, width: 60, height: 70 };
@@ -120,8 +120,24 @@ class Gem {
             playerBox.y < gemBox.y + gemBox.height &&
             playerBox.height + playerBox.y > gemBox.y) {
             // Collision detected, call collisionDetected function
-            // this.collisionDetected();
+            this.collisionDetected();
         }
+    }
+
+    collisionDetected() {
+        console.log('1 gem collected');
+        this.y = 9000;
+        this.wait();
+    }
+
+    wait() {
+        this.delay = setTimeout(function() {
+            gem.reset();
+        }, 5000);
+    }
+
+    reset() {
+        this.y = 220;
     }
 }
 
@@ -138,7 +154,7 @@ var allEnemies = [enemy1, enemy2, enemy3];
 var player = new Player();
 
 var gem = new Gem(300, 220);
-var gem = new Gem(100, 100);
+// var gem = new Gem(100, 100);
 
 
 // This listens for key presses and sends the keys to your
