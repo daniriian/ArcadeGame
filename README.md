@@ -16,7 +16,7 @@ If you colect a gem you will receive:
 * 20 points for green gems
 * 10 points for orange gems
 
-#### If you get hit by a bug you will lose 50 poits
+#### If you get hit by a bug you will lose 50 points
 
 # **LICENSE**
 MIT License
