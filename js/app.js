@@ -123,22 +123,16 @@ class Gem {
     collisionDetected() {
         console.log('1 gem collected');
         this.y = 9000;
-        this.wait();
-    }
-
-    wait() {
+        let gemm = this;
         console.log('Astept');
         this.delay = setTimeout(function() {
-            gem.reset();
+            // Gems appear at one of the following x positions: 0, 10, 200, 300, 400
+            gemm.x = (100 * Math.floor(Math.random() * 4) + 0);
+            // Gems appear at one of the following Y positions: 60, 145, 230
+            gemm.y = (60 + (85 * Math.floor(Math.random() * 3) + 0));
         }, 5000);
     }
 
-    reset() {
-        // Gems appear at one of the following x positions: 0, 10, 200, 300, 400
-        this.x = (100 * Math.floor(Math.random() * 4) + 0);
-        // Gems appear at one of the following Y positions: 60, 145, 230
-        this.y = (60 + (85 * Math.floor(Math.random() * 3) + 0));
-    }
 }
 
 class BlueGem extends Gem {
@@ -146,8 +140,6 @@ class BlueGem extends Gem {
         super(x, y);
         this.points = 30; //blue gem has 30 points
         this.sprite = "images/Gem Blue.png";
-        console.log('Am creat gem albastru');
-        console.log(`Am creat gemul albastru la ${this.x}, ${this.y}`);
     }
 
     // Draw the Blue Gem on the scren
@@ -156,6 +148,22 @@ class BlueGem extends Gem {
         // console.log(`Am desenat gemul albastru la ${this.x}, ${this.y}`);
     };
 }
+
+
+class GreenGem extends Gem {
+    constructor(x, y) {
+        super(x, y);
+        this.points = 20; //blue gem has 30 points
+        this.sprite = "images/Gem Green.png";
+    }
+
+    // Draw the Blue Gem on the scren
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        // console.log(`Am desenat gemul albastru la ${this.x}, ${this.y}`);
+    };
+}
+
 
 // Now instantiate your objects.
 var enemy1 = new Enemy(-90, 60, 200);
@@ -169,8 +177,10 @@ var allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
 var player = new Player();
 
-var gem = new BlueGem(200, 200);
-// var gem = new Gem(100, 100);
+var gem1 = new BlueGem(200, 200);
+var gem2 = new GreenGem(100, 100);
+
+var allGems = [gem1, gem2];
 
 
 // This listens for key presses and sends the keys to your
