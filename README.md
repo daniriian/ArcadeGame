@@ -12,9 +12,9 @@ You have to reach the water without hitting the bugs. Once your character reache
 
 From time to time, coloured gems appear on the board. Collect this gems in order to get more points.
 If you colect a gem you will receive:
-    * 30 points for blue gems
-    * 20 points for green gems
-    * 10 points for orange gems
+* 30 points for blue gems
+* 20 points for green gems
+* 10 points for orange gems
 
 #### If you get hit by a bug you will lose 50 poits
 
