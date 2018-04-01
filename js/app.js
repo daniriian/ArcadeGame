@@ -93,17 +93,13 @@ class Player {
 // Gem class
 // create a gem and place it on game board
 class Gem {
-    constructor(x, y, img = 'images/Gem Blue.png') {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.sprite = img;
+        //this.sprite = img;
         this.delay = 0;
+        console.log(`Am creat gem la ${x}, ${y}`);
     }
-
-    // Draw the gem on the screnn
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
 
     // Is called every time the player position is updated
     update() {
@@ -131,14 +127,34 @@ class Gem {
     }
 
     wait() {
+        console.log('Astept');
         this.delay = setTimeout(function() {
             gem.reset();
         }, 5000);
     }
 
     reset() {
-        this.y = 220;
+        // Gems appear at one of the following x positions: 0, 10, 200, 300, 400
+        this.x = (100 * Math.floor(Math.random() * 4) + 0);
+        // Gems appear at one of the following Y positions: 60, 145, 230
+        this.y = (60 + (85 * Math.floor(Math.random() * 3) + 0));
     }
+}
+
+class BlueGem extends Gem {
+    constructor(x, y) {
+        super(x, y);
+        this.points = 30; //blue gem has 30 points
+        this.sprite = "images/Gem Blue.png";
+        console.log('Am creat gem albastru');
+        console.log(`Am creat gemul albastru la ${this.x}, ${this.y}`);
+    }
+
+    // Draw the Blue Gem on the scren
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        // console.log(`Am desenat gemul albastru la ${this.x}, ${this.y}`);
+    };
 }
 
 // Now instantiate your objects.
@@ -153,7 +169,7 @@ var allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
 var player = new Player();
 
-var gem = new Gem(300, 220);
+var gem = new BlueGem(200, 200);
 // var gem = new Gem(100, 100);
 
 
