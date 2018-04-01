@@ -31,7 +31,7 @@ Enemy.prototype.update = function(dt) {
 
     // if player meets the enemy
     if (this.posX < player.x + 30 && this.posX + 60 > player.x && this.posY < player.y + 60 && this.posY + 40 > player.y) {
-        score = 0;
+        if (score - 50 < 0) { score = 0; } else score -= 50;
         document.getElementById("playerScore").innerHTML = score;
         player.reset();
     }
@@ -97,8 +97,6 @@ class Gem {
         this.x = x;
         this.y = y;
         //this.sprite = img;
-        this.delay = 0;
-        console.log(`Am creat gem la ${x}, ${y}`);
     }
 
     // Is called every time the player position is updated
@@ -121,66 +119,82 @@ class Gem {
     }
 
     collisionDetected() {
-        console.log('1 gem collected');
         this.y = 9000;
+        score += this.points; //update the score when player collects a gem
+        document.getElementById("playerScore").innerHTML = score;
         let gemm = this;
-        console.log('Astept');
-        this.delay = setTimeout(function() {
+        setTimeout(function() {
             // Gems appear at one of the following x positions: 0, 10, 200, 300, 400
             gemm.x = (100 * Math.floor(Math.random() * 4) + 0);
             // Gems appear at one of the following Y positions: 60, 145, 230
             gemm.y = (60 + (85 * Math.floor(Math.random() * 3) + 0));
-        }, 5000);
+        }, this.delay);
     }
 
 }
 
+
+//Create a Blue Gem from Gem class
 class BlueGem extends Gem {
     constructor(x, y) {
         super(x, y);
         this.points = 30; //blue gem has 30 points
         this.sprite = "images/Gem Blue.png";
+        this.delay = 20000; //redraw the gem after some time
     }
 
     // Draw the Blue Gem on the scren
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-        // console.log(`Am desenat gemul albastru la ${this.x}, ${this.y}`);
     };
 }
 
-
+//Create a Green Gem from Gem class
 class GreenGem extends Gem {
     constructor(x, y) {
         super(x, y);
-        this.points = 20; //blue gem has 30 points
+        this.points = 20; //blue gem has 20 points
         this.sprite = "images/Gem Green.png";
+        this.delay = 10000; //redraw the gem after some time
     }
 
-    // Draw the Blue Gem on the scren
+    // Draw the Green Gem on the scren
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-        // console.log(`Am desenat gemul albastru la ${this.x}, ${this.y}`);
     };
 }
 
+//Create an Orange Gem from Gem class
+class OrangeGem extends Gem {
+    constructor(x, y) {
+        super(x, y);
+        this.points = 10; //Orange gem has 15 points
+        this.sprite = "images/Gem Orange.png";
+        this.delay = 5000; //redraw the gem after some time
+    }
+
+    // Draw the Green Gem on the scren
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    };
+}
 
 // Now instantiate your objects.
 var enemy1 = new Enemy(-90, 60, 200);
 var enemy2 = new Enemy(-190, 145, 200);
 var enemy3 = new Enemy(-290, 230, 200);
 
-
-
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
 var player = new Player();
 
+//create 3 gems
 var gem1 = new BlueGem(200, 200);
 var gem2 = new GreenGem(100, 100);
-
-var allGems = [gem1, gem2];
+var gem3 = new OrangeGem(300, 100);
+//Now put all gems inside allGems array
+var allGems = [gem1, gem2, gem3];
 
 
 // This listens for key presses and sends the keys to your
