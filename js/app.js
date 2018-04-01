@@ -124,8 +124,8 @@ class Gem {
         document.getElementById("playerScore").innerHTML = score;
         let gemm = this;
         setTimeout(function() {
-            // Gems appear at one of the following x positions: 0, 10, 200, 300, 400
-            gemm.x = (100 * Math.floor(Math.random() * 4) + 0);
+            // Gems appear at one of the following x positions: 50, 150, 250, 350, 450
+            gemm.x = (100 * Math.floor(Math.random() * 4) + 50);
             // Gems appear at one of the following Y positions: 60, 145, 230
             gemm.y = (60 + (85 * Math.floor(Math.random() * 3) + 0));
         }, this.delay);
