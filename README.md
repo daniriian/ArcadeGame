@@ -8,7 +8,15 @@ In this game you have a Player and Enemies (Bugs). The goal of the player is to 
 # How to play
 
 Use the arrows on your keyboard  to move your character across the board.
-You have to reach the water without hitting the bugs. Once your character reaches the water, you get 1 point and it will move back to the grass so you can start over
+You have to reach the water without hitting the bugs. Once your character reaches the water, you get 1 point and it will move back to the grass so you can start over.
+
+From time to time, coloured gems appear on the board. Collect this gems in order to get more points.
+If you colect a gem you will receive:
+    *30 points for blue gems
+    *20 points for green gems
+    *10 points for orange gems
+
+####If you get hit by a bug you will lose 50 poits
 
 # **LICENSE**
 MIT License
